@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Summarization</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+      body {
+        font-family: Playfair Display;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: aliceblue;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #33338a;
+      }
+
+      #box {
+        padding: 20px;
+        background-image: linear-gradient(#4ca1af, #c4e0e5);
+        border-radius: 10px;
+        box-shadow: 5px 5px lightgrey;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      label {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      textarea {
+        resize: vertical;
+        border-radius: 10px;
+        box-shadow: 3px 3px lightgrey;
+      }
+
+      input[type="submit"] {
+        cursor: pointer;
+        background-color: #4293f5;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #42e0f5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Summarizer</h1>
+    <div id="box">
+      <form method="POST" action="/summarize">
+        <label for="input_text">Input Text:</label><br />
+        <textarea id="input_text" name="input_text" rows="10" cols="200">
+{{ input_text }}</textarea
+        ><br />
+        <label> Choose the type of Summarization</label><br />
+        <input type="submit" name="sum_type" value="Extractive Summary" />
+        <input type="submit" name="sum_type" value="Abstractive Summary" />
+        <br />
+        <label for="output_text">Output Text:</label><br />
+        <textarea id="output_text" name="summary" rows="10" cols="200">
+{{ output_text }}</textarea
+        ><br />
+        <input type="hidden" id="sum_type" name="sum_type" />
+      </form>
+    </div>
+  </body>
+</html>
